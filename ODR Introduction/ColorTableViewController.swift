@@ -23,11 +23,11 @@ class ColorTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
 
@@ -78,9 +78,9 @@ class ColorTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let cell = sender as? UITableViewCell, let tag = cell.textLabel?.text where validTags.contains(tag) {
-            if let detail = segue.destinationViewController as? DetailViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? UITableViewCell, let tag = cell.textLabel?.text , validTags.contains(tag) {
+            if let detail = segue.destination as? DetailViewController {
                 detail.navigationItem.title = tag
                 detail.tagToLoad = tag
             }

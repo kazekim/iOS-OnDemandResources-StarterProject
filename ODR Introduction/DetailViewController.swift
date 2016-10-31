@@ -16,15 +16,28 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var image4: UIImageView!
     
     var tagToLoad: String!
+    
+    var request: NSBundleResourceRequest!
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.displayImages()
+        request = NSBundleResourceRequest(tags: [tagToLoad])
+        request.beginAccessingResources { (error: Error?) -> Void in
+            //  Called on background thread
+            if error == nil {
+                OperationQueue.main.addOperation({ () -> Void in
+                    self.displayImages()
+                })
+            }else{
+                print("Error \(error)");
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
