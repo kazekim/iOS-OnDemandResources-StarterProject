@@ -6,6 +6,10 @@
 //  Copyright © 2015 tutsplus. All rights reserved.
 //
 
+//Reference Link
+// https://code.tutsplus.com/tutorials/an-introduction-to-on-demand-resources-on-ios-and-tvos--cms-24929
+// https://www.raywenderlich.com/145209/demand-resources-tvos-tutorial
+
 import UIKit
 
 let validTags = [
